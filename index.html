@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>
+            Traditional Ayurveda
+        </title>
+        <meta name="description" content="Traditional Ayurveda" />
+        <meta name="keywords" content="Ayurveda clinic, Ayurvedic treatment, natural healing, herbal medicine, Ayurveda therapy, holistic health, Panchakarma, Ayurvedic doctor, wellness center, Ayurvedic massage, Ayurvedic detox, traditional medicine, alternative medicine, Ayurvedic consultation, Ayurvedic spa, herbal remedies, Ayurveda health care, natural treatment, holistic treatment, Ayurvedic herbs, Ayurveda specialist" />
+        <meta name="author" content="Traditional Ayurveda" />
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+        <!--Replace with your tailwind.css once created-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400&display=swap" rel="stylesheet">
+        <style>
+            .text-green-800 {
+                color: #406526;
+            }
+
+            .bg-green-800 {
+                background: #406526;
+            }
+            body{
+                background-image: url("assets/background.png");
+                background-repeat: no-repeat;
+                background-origin: content-box;
+                background-size: 100% 100%;
+                font-family: 'Teko', sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
+            }
+            .why_us_section_bg {
+                background-image: url("assets/section_bg.png");
+                background-position: 80% 50%;
+                background-repeat: no-repeat;
+                background-size: 50%;
+                /* Optional: Set a minimum height for the section to make sure the image is visible */
+                z-index: 9999;
+            }
+            .hori-faded-line {
+                height: 3px;
+                width: 100%;
+                background: linear-gradient(to right, rgba(64, 101, 38, 0) 0%, rgba(64, 101, 38, 1) 50%, rgba(64, 101, 38, 0) 100%);
+            }
+            .bg-footer {
+                background-color: #9ea967;
+            }
+
+            /* slider */
+            #services {
+                position: relative;
+            }
+
+            .slider-container {
+                display: flex;
+                transition: transform 0.5s ease;
+                width: 100%; /* To accommodate two slides */
+            }
+
+            .slide {
+                min-width: 100%; /* Each slide takes up 50% of the container width */
+                box-sizing: border-box;
+            }
+
+            .slider-controls {
+                width: 10%;
+                display: flex;
+                transform: translateY(-50%);
+                pointer-events: none;
+                margin: 0 auto;
+                align-items: center;
+            }
+
+            .slider-controls .prev,
+            .slider-controls .next {
+                pointer-events: auto;
+            }
+
+            .dots {
+                transform: translateX(-50%);
+                display: flex;
+                gap: 5px;
+                margin-left: 20px;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+                background: gray;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .dot.active {
+                background: black;
+            }
+            #nav-content {
+                display: none;
+            }
+
+            @media (min-width: 1024px) {
+                #nav-content {
+                    display: flex;
+                }
+            }
+        </style>
+    </head>
+    <body class="leading-normal tracking-normal text-white overflow-x-hidden">
+        <!--Nav-->
+        <nav id="header" class="w-full z-30 top-0 px-10 lg:px-15 text-white">
+            <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+                <div class="pl-4 flex items-center">
+                    <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+                        href="#">
+                        <img src="assets/ta_logo.png" class="w-32 md:w-40 lg:w-52  h-auto" />
+                    </a>
+                </div>
+                <div class="block lg:hidden pr-4">
+                    <button id="nav-toggle"
+                        class="flex items-center p-1 text-pink-800 hover:text-black focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                        <svg class="h-6 w-6 text-green-800" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <title>Menu</title>
+                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+                    id="nav-content">
+                    <ul class="list-reset lg:flex justify-end flex-1 items-center  space-x-0 md:space-x-0 lg:space-x-10">
+                        <li class="mr-3">
+                            <a class="inline-block py-2 px-4 text-green-800 font-bold text-3xl no-underline" href="#home">HOME</a>
+                        </li>
+                        <li class="mr-3">
+                            <a class="inline-block  text-green-800 no-underline font-bold text-3xl hover:text-black hover:text-underline py-2 px-4"
+                                href="#services">SERVICES</a>
+                        </li>
+                        <li class="mr-3">
+                            <a class="inline-block  text-green-800 no-underline font-bold text-3xl hover:text-black hover:text-underline py-2 px-4"
+                                href="#about">ABOUT US</a>
+                        </li>
+                    </ul>
+                    <button id="navAction"
+                        class="mx-auto lg:mx-0 hover:underline mt-4 lg:mt-0 py-1 px-8 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                        <img src="assets/ta_btn_bg.png" class="w-40"/>
+                    </button>
+                </div>
+            </div>
+            <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+        </nav>
+        <!--Hero-->
+        <section id="home" class=" mt-10 md:mt-0 lg:mt-0">
+            <div class="px-10 lg:px-20 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+                <!--Left Col-->
+                <div class="flex flex-col w-full md:w-2/5 justify-center text-center md:text-left">
+                    <h1 class="text-green-800 text-5xl font-bold  sm:text-center md:text-left lg:text-left">
+                        Lorem Ipsum 
+                    </h1>
+                    <p class="leading-normal text-green-800 text-2xl mb-8 font-serif">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </p>
+                </div>
+                <!--Right Col-->
+                <div class="w-full md:w-3/5 text-center -mt-20">
+                    <img class="w-full md:w-4/5 z-50 mx-auto" src="assets/title_img.png" />
+                </div>
+            </div>
+        </section>
+        
+        <section id="services" class="relative overflow-hidden max-w-5xl mx-auto m-8 space-y-10">
+            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-black">
+                <div class="text-white z-20 relative mt-4">Services</div>
+                <img src="assets/ta_heading_bg.png" alt="" class="z-10 -mt-20 h-24 mx-auto">
+            </h2>
+            <div class="slider-container">
+                <div id="slide_1" class="slide container space-y-10 p-10">
+                    <div class="flex mt-20">
+                        <img src="assets/slide1.png" class="rounded-full w-36 h-36">
+                        <div class="ml-4">
+                            <h3 class="text-3xl text-black font-bold leading-none mb-3 text-left">Ayurvedic Consultation</h3>
+                            <p class="text-black mb-8 font-serif text-lg text-left">
+                                Begin your wellness journey with a comprehensive consultation where our experts will
+                                assess your unique constitution (prakriti) and imbalances (vikriti). Through detailed analysis,
+                                we will create a personalized health plan tailored to your specific needs.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="mr-4">
+                            <h3 class="text-3xl text-black font-bold leading-none mb-3 text-right">Panchakarma Therapy</h3>
+                            <p class="text-black mb-8 font-serif text-lg text-right">
+                                Experience the profound detoxification and rejuvenation benefits of Panchakarma, a
+                                cornerstone of Ayurvedic healing. Our therapies are designed to cleanse the body of toxins,
+                                restore balance, and promote vitality.
+                            </p>
+                        </div>
+                        <img src="assets/slide2.png" class="rounded-full w-36 h-36">
+                    </div>
+                    <div class="flex">
+                        <img src="assets/slide3.png" class="rounded-full w-36 h-36">
+                        <div class="ml-4">
+                            <h3 class="text-3xl text-black font-bold leading-none mb-3 text-left">Ayurvedic Massage</h3>
+                            <p class="text-black mb-8 font-serif text-lg text-left">
+                                Indulge in the therapeutic bliss of Ayurvedic massage, known as Abhyanga. Using medicated
+                                oils and specific techniques, our skilled therapists will release tension, improve circulation,
+                                and promote relaxation.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="mr-4">
+                            <h3 class="text-3xl text-black font-bold leading-none mb-3 text-right">Ayurvedic Beauty Therapy</h3>
+                            <p class="text-black mb-8 font-serif text-lg text-right">
+                                Enhance your natural beauty with Ayurvedic beauty therapies that nourish your skin and
+                                promote a radiant complexion. From herbal facials to skincare rituals tailored to your dosha,
+                                our beautytreatments harness the power of Ayurvedic herbs and techniques to rejuvenate and
+                                revitalize your skin.
+                            </p>
+                        </div>
+                        <img src="assets/slide4.png" class="rounded-full w-36 h-36">
+                    </div>
+                </div>
+                <div id="slide_2" class="slide container space-y-10 p-10">
+                    <div class="flex mt-20">
+                        <img src="assets/slide1.png" class="rounded-full w-36 h-36">
+                        <div class="ml-4">
+                            <h3 class="text-3xl text-black font-bold leading-none mb-3 text-left">Ayurvedic Consultation</h3>
+                            <p class="text-black mb-8 font-serif text-lg text-left">
+                                Begin your wellness journey with a comprehensive consultation where our experts will
+                                assess your unique constitution (prakriti) and imbalances (vikriti). Through detailed analysis,
+                                we will create a personalized health plan tailored to your specific needs.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="mr-4">
+                            <h3 class="text-3xl text-black font-bold leading-none mb-3 text-right">Panchakarma Therapy</h3>
+                            <p class="text-black mb-8 font-serif text-lg text-right">
+                                Experience the profound detoxification and rejuvenation benefits of Panchakarma, a
+                                cornerstone of Ayurvedic healing. Our therapies are designed to cleanse the body of toxins,
+                                restore balance, and promote vitality.
+                            </p>
+                        </div>
+                        <img src="assets/slide2.png" class="rounded-full w-36 h-36">
+                    </div>
+                    <div class="flex">
+                        <img src="assets/slide3.png" class="rounded-full w-36 h-36">
+                        <div class="ml-4">
+                            <h3 class="text-3xl text-black font-bold leading-none mb-3 text-left">Ayurvedic Massage</h3>
+                            <p class="text-black mb-8 font-serif text-lg text-left">
+                                Indulge in the therapeutic bliss of Ayurvedic massage, known as Abhyanga. Using medicated
+                                oils and specific techniques, our skilled therapists will release tension, improve circulation,
+                                and promote relaxation.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="mr-4">
+                            <h3 class="text-3xl text-black font-bold leading-none mb-3 text-right">Ayurvedic Beauty Therapy</h3>
+                            <p class="text-black mb-8 font-serif text-lg text-right">
+                                Enhance your natural beauty with Ayurvedic beauty therapies that nourish your skin and
+                                promote a radiant complexion. From herbal facials to skincare rituals tailored to your dosha,
+                                our beautytreatments harness the power of Ayurvedic herbs and techniques to rejuvenate and
+                                revitalize your skin.
+                            </p>
+                        </div>
+                        <img src="assets/slide4.png" class="rounded-full w-36 h-36">
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <span class="prev">
+                    <img src="assets/left.png" alt="">
+                </span>
+                <div class="dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                </div>
+                <span class="next">
+                    <img src="assets/right.png" alt="">
+                </span>
+            </div>
+        </section>
+
+        <section>
+            <img src="assets/section_bg.png" class="absolute right-0 lg:right-0 lg:right-0 xl:-right-20 w-2/5 -mt-32 z-0 hidden md:hidden lg:block" alt="">
+            <div class="container my-28 w-full lg:w-1/2  pl-0 lg:pl-20">
+                <h2 class="text-center my-2 text-5xl font-bold leading-tight text-black">
+                    <div class="text-white -mt-10 z-20 relative mt-4">Why Us</div>
+                    <img src="assets/ta_heading_bg.png" alt="" class="z-10 -mt-20 h-24 mx-auto">
+                </h2>
+                <div class="pl-20">
+                    <div class="mr-4">
+                        <h3 class="text-3xl text-black font-bold leading-none mb-3">
+                            Experienced Practitioners
+                        </h3>
+                        <p class="text-black mb-8 font-serif text-lg text-lg">
+                            Our team consists of highly trained Ayurvedic doctors and therapists
+                            with years of experience in holistic healthcare.
+                        </p>
+                    </div>
+                    <div class="mr-4">
+                        <h3 class="text-3xl text-black font-bold leading-none mb-3">
+                            Personalized Care
+                        </h3>
+                        <p class="text-black mb-8 font-serif text-lg text-lg">
+                            We believe in treating the individual, not just the symptoms.
+                            Each treatment plan is tailored to your unique needs and goals.
+                        </p>
+                    </div>
+                    <div class="mr-4">
+                        <h3 class="text-3xl text-black font-bold leading-none mb-3">
+                            Authentic Ayurveda
+                        </h3>
+                        <p class="text-black mb-8 font-serif text-lg text-lg">
+                            We adhere to the principles of Ayurveda in its purest form, ensuring
+                            that you receive the highest quality care rooted in ancient wisdom.
+                        </p>
+                    </div>
+                    <div class="mr-4">
+                        <h3 class="text-3xl text-black font-bold leading-none mb-3">
+                            Modern Facilities
+                        </h3>
+                        <p class="text-black mb-8 font-serif text-lg text-lg">
+                            Our clinic is equipped with state-of-the-art facilities to provide you
+                            with a comfortable and nurturing environment for healing and relaxation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about">
+            <div class="container max-w-5xl mx-auto m-8 mt-20 space-y-10 p-10">
+                <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-black">
+                    <div class="text-white -mt-10 z-20 relative mt-4">About Us</div>
+                    <img src="assets/ta_heading_bg.png" alt="" class="z-10 -mt-20 h-24 mx-auto">
+                </h2>
+                <div class="text-center">
+                    <p class="text-black mb-8 font-serif text-lg text-lg">
+                        Welcome to Traditional Ayurveda, a sanctuary of wellness nestled in the heart of Pilicode. Founded with a vision to
+                        revive the ancient healing traditions of Ayurveda, our clinic is dedicated to promoting holistic health and vitality.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-3xl text-black font-bold leading-none mb-3">
+                        Our Mission
+                    </h3>
+                    <p class="text-black mb-8 font-serif text-lg text-lg">
+                        At Traditional Ayurveda our mission is to empower individuals to reclaim their health and well-being through the
+                        timeless wisdom of Ayurveda. We strive to provide compassionate care, personalized treatments, and education to inspire
+                        lifelong wellness habits.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-3xl text-black font-bold leading-none mb-3">
+                        Our Philosophy
+                    </h3>
+                    <p class="text-black mb-8 font-serif text-lg text-lg">
+                        Rooted in the philosophy of Ayurveda, we believe that true health is a harmonious balance of the body, mind, and
+                        spirit. By addressing the root cause of imbalance rather than just the symptoms, we seek to restore equilibrium and
+                        promote optimal health for our clients.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-3xl text-black font-bold leading-none mb-3">
+                        Our Team
+                    </h3>
+                    <p class="text-black mb-8 font-serif text-lg text-lg">
+                        Behind every successful healing journey is a team of dedicated professionals. At Traditional Ayurveda, our team
+                        comprises experienced Ayurvedic doctors, skilled therapists, and compassionate support staff who are committed to your
+                        well-being. With a blend of traditional wisdom and modern expertise, we provide comprehensive care tailored
+                        to your individual needs.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-3xl text-black font-bold leading-none mb-3">
+                        Our Approach
+                    </h3>
+                    <p class="text-black mb-8 font-serif text-lg text-lg">
+                        Our approach to wellness is holistic and integrative. We combine ancient Ayurvedic therapies with modern medical
+                        knowledge to offer a complete spectrum of healing modalities. Whether you're seeking relief from a specific health
+                        concern
+                        or striving for overall vitality, wework with you to create a personalized wellness plan that aligns with your goals and
+                        lifestyle.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-3xl text-black font-bold leading-none mb-3">
+                        Environmental Responsibility
+                    </h3>
+                    <p class="text-black mb-8 font-serif text-lg text-lg">
+                        We are committed to sustainability and environmental responsibility. From sourcing organic herbs to minimizing
+                        waste in our operations, we strive to minimize our ecological footprint and promote a healthier planet for generations
+                        to come.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div class="hori-faded-line"></div>
+        <section>
+            <div class="m-8 mt-20 block md:block lg:flex gap-2">
+                <div class="w-full md::w-1/2 lg:w-1/2 p-8 lg:border-r-2 lg:border-green-800">
+                    <h3 class="text-2xl text-green-800 font-bold leading-none mb-3">
+                        End Note
+                    </h3>
+                    <p class="text-black mb-8 font-serif text-lg text-lg">
+                        Embark on a journey to holistic wellness with Traditional
+                        Ayurveda Restore balance, rejuvenate your body, and awaken
+                        your inner vitality with the time-tested wisdom of Ayurveda.
+                        Book your appointment for experiencing our services.
+                    </p>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0972297607655!2d144.96315781531716!3d-37.81362797975161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d92a4c2a0b0b!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1619752805779!5m2!1sen!2sau"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="sm:w-full md:w-1/2 lg:w-1/2  px-4 lg:px-20">
+                    <form class="space-y-10">
+                        <div class="mb-4 flex">
+                            <label for="name" class="text-green-800 text-lg w-24">Name :</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full border-b-2 border-green-800 focus:border-green-800 focus:outline-none px-2 bg-transparent">
+                        </div>
+                        <div class="mb-4 flex">
+                            <label for="email" class="text-green-800 text-lg w-24">Email :</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full border-b-2 border-green-800 focus:border-green-800 focus:outline-none px-2 bg-transparent">
+                        </div>
+                        <div class="mb-4 flex">
+                            <label for="mobile" class="text-green-800 text-lg w-24 whitespace-nowrap">Mobile Number : </label>
+                            <input type="tel" id="mobile" name="mobile" required
+                                class="w-full border-b-2 border-green-800 focus:border-green-800 focus:outline-none px-2 bg-transparent">
+                        </div>
+                        <button id="navAction"
+                            class="text-white focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                            <img src="assets/ta_btn_bg.png" class="w-40" />
+                        </button>
+                    </form>
+                    <div class="mt-8 text-green-800">
+                        <h2 class="text-green-800 text-3xl">Contact Us</h2>
+                        <p>
+                            Lorem Ipsum Road.Lorem Ipsum, <br/>
+                            Bangalore, India - 560001<br/>
+                            info@traditionalayurveda.com
+                            Ph: +91 0000 000 000, +91 0000 000 000 
+                        </p>
+                    </div>
+                    <div class="mt-8 text-green-800 flex space-x-4">
+                        <a href="https://www.facebook.com">
+                            <svg fill="currentColor" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 310 310" xml:space="preserve">
+                                <g id="XMLID_834_">
+                                    <path id="XMLID_835_" d="M81.703,165.106h33.981V305c0,2.762,2.238,5,5,5h57.616c2.762,0,5-2.238,5-5V165.765h39.064
+                                    c2.54,0,4.677-1.906,4.967-4.429l5.933-51.502c0.163-1.417-0.286-2.836-1.234-3.899c-0.949-1.064-2.307-1.673-3.732-1.673h-44.996
+                                    V71.978c0-9.732,5.24-14.667,15.576-14.667c1.473,0,29.42,0,29.42,0c2.762,0,5-2.239,5-5V5.037c0-2.762-2.238-5-5-5h-40.545
+                                    C187.467,0.023,186.832,0,185.896,0c-7.035,0-31.488,1.381-50.804,19.151c-21.402,19.692-18.427,43.27-17.716,47.358v37.752H81.703
+                                    c-2.762,0-5,2.238-5,5v50.844C76.703,162.867,78.941,165.106,81.703,165.106z" />
+                                </g>
+                            </svg>
+                        </a>
+                        <a href="https://www.twitter.com">
+                            <svg fill="currentColor" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 310 310" xml:space="preserve">
+                                <g id="XMLID_826_">
+                                    <path id="XMLID_827_" d="M302.973,57.388c-4.87,2.16-9.877,3.983-14.993,5.463c6.057-6.85,10.675-14.91,13.494-23.73
+                            		c0.632-1.977-0.023-4.141-1.648-5.434c-1.623-1.294-3.878-1.449-5.665-0.39c-10.865,6.444-22.587,11.075-34.878,13.783
+                            		c-12.381-12.098-29.197-18.983-46.581-18.983c-36.695,0-66.549,29.853-66.549,66.547c0,2.89,0.183,5.764,0.545,8.598
+                            		C101.163,99.244,58.83,76.863,29.76,41.204c-1.036-1.271-2.632-1.956-4.266-1.825c-1.635,0.128-3.104,1.05-3.93,2.467
+                            		c-5.896,10.117-9.013,21.688-9.013,33.461c0,16.035,5.725,31.249,15.838,43.137c-3.075-1.065-6.059-2.396-8.907-3.977
+                            		c-1.529-0.851-3.395-0.838-4.914,0.033c-1.52,0.871-2.473,2.473-2.513,4.224c-0.007,0.295-0.007,0.59-0.007,0.889
+                            		c0,23.935,12.882,45.484,32.577,57.229c-1.692-0.169-3.383-0.414-5.063-0.735c-1.732-0.331-3.513,0.276-4.681,1.597
+                            		c-1.17,1.32-1.557,3.16-1.018,4.84c7.29,22.76,26.059,39.501,48.749,44.605c-18.819,11.787-40.34,17.961-62.932,17.961
+                            		c-4.714,0-9.455-0.277-14.095-0.826c-2.305-0.274-4.509,1.087-5.294,3.279c-0.785,2.193,0.047,4.638,2.008,5.895
+                            		c29.023,18.609,62.582,28.445,97.047,28.445c67.754,0,110.139-31.95,133.764-58.753c29.46-33.421,46.356-77.658,46.356-121.367
+                            		c0-1.826-0.028-3.67-0.084-5.508c11.623-8.757,21.63-19.355,29.773-31.536c1.237-1.85,1.103-4.295-0.33-5.998
+                            		C307.394,57.037,305.009,56.486,302.973,57.388z" />
+                                </g>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com">
+                            <svg fill="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 169.063 169.063"
+                                xml:space="preserve">
+                                <g>
+                                    <path d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752
+                                    c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407
+                                    c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752
+                                    c17.455,0,31.656,14.201,31.656,31.655V122.407z" />
+                                    <path d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561
+                                    C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561
+                                    c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z" />
+                                    <path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78
+                                    c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78
+                                    C135.661,29.421,132.821,28.251,129.921,28.251z" />
+                                </g>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com">
+                            <svg class="text-green-800" width="20px" height="20px" viewBox="0 -3 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="Dribbble-Light-Preview" transform="translate(-300.000000, -7442.000000)" fill="currentColor">
+                                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                                            <path
+                                                d="M251.988432,7291.58588 L251.988432,7285.97425 C253.980638,7286.91168 255.523602,7287.8172 257.348463,7288.79353 C255.843351,7289.62824 253.980638,7290.56468 251.988432,7291.58588 M263.090998,7283.18289 C262.747343,7282.73013 262.161634,7282.37809 261.538073,7282.26141 C259.705243,7281.91336 248.270974,7281.91237 246.439141,7282.26141 C245.939097,7282.35515 245.493839,7282.58153 245.111335,7282.93357 C243.49964,7284.42947 244.004664,7292.45151 244.393145,7293.75096 C244.556505,7294.31342 244.767679,7294.71931 245.033639,7294.98558 C245.376298,7295.33761 245.845463,7295.57995 246.384355,7295.68865 C247.893451,7296.0008 255.668037,7296.17532 261.506198,7295.73552 C262.044094,7295.64178 262.520231,7295.39147 262.895762,7295.02447 C264.385932,7293.53455 264.28433,7285.06174 263.090998,7283.18289"
+                                                id="youtube-[#168]">
+                            
+                                            </path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="flex space-x-3 md:space-x-5 lg:space-x-10 text-green-800 mt-10">
+                        <a href="#home" class="text-lg md:text-lg lg:text-3xl font-semibold">HOME</a>
+                        <span class="text-3xl font-semibold">|</span>
+                        <a href="#services" class="text-lg md:text-lg lg:text-3xl font-semibold">SERVICES</a>
+                        <span class="text-3xl font-semibold">|</span>
+                        <a href="#about" class="text-lg md:text-lg lg:text-3xl font-semibold">ABOUT US</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="w-full h-15 text-black bg-footer font-serif text-base">
+          <div class="p-4 text-center">© Traditional Ayurveda 2024-2025<!-- | Designed and Developed by Mania Tech --></div>
+        </section>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                    const slides = document.querySelectorAll('.slide');
+                    const dots = document.querySelectorAll('.dot');
+                    const prevButton = document.querySelector('.prev');
+                    const nextButton = document.querySelector('.next');
+                    let currentSlide = 0;
+
+                    function showSlide(index) {
+                        const sliderContainer = document.querySelector('.slider-container');
+                        const offset = -index * 100; // Assuming each slide takes up 100% of the container's width
+                        sliderContainer.style.transform = `translateX(${offset}%)`;
+                        dots.forEach(dot => dot.classList.remove('active'));
+                        dots[index].classList.add('active');
+                    }
+
+                    prevButton.addEventListener('click', function () {
+                        currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+                        showSlide(currentSlide);
+                    });
+
+                    nextButton.addEventListener('click', function () {
+                        currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+                        showSlide(currentSlide);
+                    });
+
+                    dots.forEach((dot, index) => {
+                        dot.addEventListener('click', function () {
+                            currentSlide = index;
+                            showSlide(currentSlide);
+                        });
+                    });
+
+                    // Show the first slide initially
+                    showSlide(0);
+                    const navToggle = document.getElementById('nav-toggle');
+                    const navContent = document.getElementById('nav-content');
+
+                    navToggle.addEventListener('click', function () {
+                        if (navContent.style.display === 'none' || navContent.style.display === '') {
+                            navContent.style.display = 'block';
+                        } else {
+                            navContent.style.display = 'none';
+                        }
+                    });
+                });
+        </script>
+    </body>
+</html>
